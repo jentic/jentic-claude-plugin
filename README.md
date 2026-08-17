@@ -33,12 +33,3 @@ Then, if prompted, run `/reload-plugins`.
 
 - `.mcp.json` — the Jentic remote MCP server (hosted catalogue, OAuth).
 - `skills/onboard-jentic-one/SKILL.md` — the self-hosted onboarding skill.
-- `scripts/sync-skill.sh` — refresh the skill from an upstream copy (see below).
-
-The onboarding guide is maintained upstream and re-packaged here as a plugin
-skill. To refresh it from a local copy of the upstream markdown so the two do not
-drift:
-
-```
-UPSTREAM_SKILL=/path/to/onboard-jentic-one.md scripts/sync-skill.sh
-```
