@@ -21,8 +21,9 @@ server, then inspect and execute it on self-hosted Jentic One**:
 
 ## Workflow
 
-1. **Discover** — use the hosted `jentic` MCP server to search for an agent
-   capability in natural language until you find the use case you want.
+1. **Discover** — run `/jentic:search-jentic-capabilities` (or just describe what
+   you want to do) to search the hosted `jentic` MCP server in natural language
+   until you find the operation for your use case.
 2. **Onboard** — run `/jentic:onboard-jentic-one` to stand up self-hosted Jentic
    One (once).
 3. **Execute** — on your instance, run the capability with the
@@ -40,13 +41,16 @@ This is a private marketplace for now; you need read access to the repo.
 
 Then, if prompted, run `/reload-plugins`.
 
-- **Search for a capability:** the `jentic` MCP server connects automatically.
-  The first request triggers an OAuth sign-in in your browser; Claude Code stores
-  the token for you — nothing is kept in this repo.
+- **Search for a capability:** run `/jentic:search-jentic-capabilities`. The
+  `jentic` MCP server connects automatically; the first request triggers an OAuth
+  sign-in in your browser; Claude Code stores the token for you — nothing is kept
+  in this repo.
 - **Onboard self-hosted Jentic One:** invoke the skill with
   `/jentic:onboard-jentic-one`.
 
 ## Contents
 
 - `.mcp.json` — the Jentic remote MCP server (capability search, OAuth).
+- `skills/search-jentic-capabilities/SKILL.md` — orients the agent to the hosted
+  natural-language capability search.
 - `skills/onboard-jentic-one/SKILL.md` — the self-hosted onboarding skill.
