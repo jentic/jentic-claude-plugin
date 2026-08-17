@@ -2,7 +2,7 @@
   "name": "jentic",
   "displayName": "Jentic",
   "version": "0.1.0",
-  "description": "Onboard onto self-hosted Jentic One and connect to the Jentic remote MCP server for API discovery.",
+  "description": "Search for agent capabilities in natural language via the Jentic remote MCP server, then onboard self-hosted Jentic One to inspect and execute them.",
   "author": {
     "name": "Jentic Team",
     "email": "dev@jentic.com"

@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "jentic",
-  "description": "Jentic plugins for Claude Code — onboarding and the Jentic remote MCP server.",
+  "description": "Jentic plugins for Claude Code — capability search via the remote MCP server, plus self-hosted Jentic One onboarding.",
   "owner": {
     "name": "Jentic",
     "email": "dev@jentic.com"
@@ -10,7 +10,7 @@
     {
       "name": "jentic",
       "source": "./",
-      "description": "Onboard onto self-hosted Jentic One and connect to the Jentic remote MCP server for API discovery."
+      "description": "Search for agent capabilities in natural language via the Jentic remote MCP server, then onboard self-hosted Jentic One to inspect and execute them."
     }
   ]
 }
