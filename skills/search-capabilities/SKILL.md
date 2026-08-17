@@ -1,5 +1,5 @@
 ---
-name: search-jentic-capabilities
+name: search-capabilities
 description: Explains and orients the user to Jentic's hosted capability search — a natural-language way to find an API operation for a use case across thousands of APIs and hundreds of thousands of operations. Use this when someone wants to discover whether an integration exists ("is there an API to send a Slack message / pull recent news / create a Stripe charge?"), asks what Jentic can do, wants to find the right API/operation for a task described in plain English, or is deciding how to automate a use case. Sets up the workflow: search here to find the operation, then move to self-hosted Jentic One to inspect and execute it. NOT the execution path itself — the hosted server's load/execute tools are deprecated.
 user-invocable: true
 allowed-tools: Read
