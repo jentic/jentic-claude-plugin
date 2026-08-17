@@ -1,0 +1,14 @@
+{
+  "name": "jentic",
+  "displayName": "Jentic",
+  "version": "0.1.0",
+  "description": "Onboard onto self-hosted Jentic One and connect to the Jentic remote MCP server for API discovery.",
+  "author": {
+    "name": "Jentic Team",
+    "email": "dev@jentic.com"
+  },
+  "homepage": "https://jentic.com/jentic-one",
+  "repository": "https://github.com/jentic/jentic-claude-plugin",
+  "license": "MIT",
+  "keywords": ["jentic", "mcp", "api", "onboarding", "jentic-one"]
+}
