@@ -25,7 +25,10 @@ Then, if prompted, run `/reload-plugins`.
 
 - **Connect to the hosted catalogue:** the `jentic` MCP server connects
   automatically. The first request triggers an OAuth sign-in in your browser;
-  Claude Code stores the token for you — nothing is kept in this repo.
+  Claude Code stores the token for you — nothing is kept in this repo. (The
+  server also accepts a static API key, but this plugin intentionally uses only
+  the OAuth flow so no shared secret lives in the repo and each user gets their
+  own token; do not add an auth header to `.mcp.json`.)
 - **Onboard self-hosted Jentic One:** invoke the skill with
   `/jentic:onboard-jentic-one`.
 
