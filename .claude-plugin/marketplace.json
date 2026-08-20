@@ -4,7 +4,7 @@
   "description": "Jentic plugins for Claude Code — capability search via the remote MCP server, plus self-hosted Jentic One onboarding.",
   "owner": {
     "name": "Jentic",
-    "email": "dev@jentic.com"
+    "email": "sophie@jentic.com"
   },
   "plugins": [
     {

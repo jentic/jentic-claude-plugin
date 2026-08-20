@@ -5,7 +5,7 @@
   "description": "Search for agent capabilities in natural language via the Jentic remote MCP server, then onboard self-hosted Jentic One to inspect and execute them.",
   "author": {
     "name": "Jentic Team",
-    "email": "dev@jentic.com"
+    "email": "sophie@jentic.com"
   },
   "homepage": "https://jentic.com/jentic-one",
   "repository": "https://github.com/jentic/jentic-claude-plugin",
