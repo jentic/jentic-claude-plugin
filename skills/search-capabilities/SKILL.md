@@ -1,6 +1,6 @@
 ---
 name: search-capabilities
-description: Explains and orients the user to Jentic's hosted capability search — a natural-language way to find an API operation for a use case across thousands of APIs and hundreds of thousands of operations. Use this when someone wants to discover whether an integration exists ("is there an API to send a Slack message / pull recent news / create a Stripe charge?"), asks what Jentic can do, wants to find the right API/operation for a task described in plain English, or is deciding how to automate a use case. Sets up the workflow: search here to find the operation, then move to self-hosted Jentic One to inspect and execute it. NOT the execution path itself — the hosted server's load/execute tools are deprecated.
+description: Explains and orients the user to Jentic's hosted capability search — a natural-language way to find an API operation for a use case across thousands of APIs and hundreds of thousands of operations. Use this when someone wants to discover whether an integration exists ("is there an API to send a Slack message / pull recent news / create a Stripe charge?"), asks what Jentic can do, wants to find the right API/operation for a task described in plain English, or is deciding how to automate a use case. Sets up the workflow: search here to find the operation, then move to self-hosted Jentic One to inspect and execute it. NOT the execution path itself — the hosted server's load/execute tools are deprecated on 20 September 2026.
 user-invocable: true
 allowed-tools: Read
 argument-hint: "[what you want to do, in plain English]"
@@ -43,8 +43,8 @@ It connects automatically; the first call runs an OAuth sign-in in the browser.
    moving on.
 
 Search is the hosted server's purpose. Its **load and execute tools are being
-deprecated** — do not rely on them to run an operation; that path moves to self-hosted
-Jentic One.
+deprecated on 20 September 2026** — do not rely on them to run an operation; that
+path moves to self-hosted Jentic One.
 
 ## After you've found the operation
 

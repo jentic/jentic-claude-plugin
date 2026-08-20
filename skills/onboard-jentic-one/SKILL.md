@@ -1,22 +1,26 @@
 ---
 name: onboard-jentic-one
-description: Guide a user through installing and onboarding self-hosted Jentic One (the self-hosted API-execution control plane) from a fresh terminal. Use this when someone wants to install, set up, stand up, self-host, or get started with Jentic One / "jentic one", run the jenticctl install wizard, install the jentic CLI, or register/bootstrap an agent against a self-hosted Jentic instance. Walks the real two-machine flow — stand up the instance (install.sh + jenticctl install wizard), health-check it, then install the CLI on the agent machine and bootstrap/register + human-approve the agent. NOT for the Jentic cloud platform (app.jentic.com / api.jentic.com), which is a separate product.
+description: Guide a user through installing and onboarding self-hosted Jentic One (the self-hosted API-execution control plane) from a new Claude Code terminal session. Use this when someone wants to install, set up, stand up, self-host, or get started with Jentic One / "jentic one", run the jenticctl install wizard, install the jentic CLI, or register/bootstrap an agent against a self-hosted Jentic instance. Walks both roles (instance then agent), which can run on one machine or two — stand up the instance (install.sh + jenticctl install wizard), health-check it, then install the CLI and bootstrap/register + human-approve the agent.
 user-invocable: true
 allowed-tools: Read, Write, Edit, Bash
 argument-hint: "[instance-host]"
 ---
 # Onboard onto self-hosted Jentic One
 
-Take a user from a bare terminal to a working **self-hosted** Jentic One instance with a
-registered, approved agent.
+Take a user from a new Claude Code terminal session to a working **self-hosted**
+Jentic One instance with a registered, approved agent.
 
 This skill is distributed via the Jentic connector, but its subject is the **self-hosted**
 product — the connector only *delivers this guide*, it does not connect to the instance the
 guide helps stand up.
 
+**You explain; the user does.** Have the user open a **new terminal
+session** and run every command, wizard prompt, and approval there. Do not run them
+yourself — tell the user what to paste, then wait for them to confirm before moving on.
+
 ## What self-hosted Jentic One is (set expectations correctly)
 
-A **self-hosted gateway for secure third-party API execution by AI agents**: you register
+A **self-hosted execution broker for secure third-party API execution by AI agents**: you register
 the APIs an agent may use, store credentials once, and the agent calls out through a
 credential-injecting **Broker** so secrets never leave your infrastructure and never reach
 the agent. It runs on the user's own infra (laptop / VM / Kubernetes).
@@ -26,19 +30,17 @@ It is **two roles by design** — keep them distinct in your explanation:
 - **Instance** — runs the server (control plane `:8000`, broker `:8100`) and holds
   credentials. Needs Docker or a Python (uv) venv.
 - **Agent** — runs the `jentic` CLI only, ideally **not** as the same OS user / host as
-  the broker when real credentials are involved (the "secrets never reach the agent"
-  guarantee weakens on a shared host). Same-host is fine for trying it out / non-real
-  credentials.
+  the broker.
 
 ## Procedure
 
 ### 0. Establish the role
 
-Is this terminal the **instance** (will host the server) or an **agent** talking to an
-existing instance? To just try Jentic One on one laptop, the user plays both roles: do
-Step 1–2, then Step 3–5, on the same machine — but keep them separate in your head. If an
-instance host was passed as the argument, treat this as agent-side onboarding against that
-host and skip to Step 3.
+Is the user's Claude Code session on the **instance** (will host the server) or an
+**agent** talking to an existing instance? To just try Jentic One on one laptop, the
+user plays both roles: do Step 1–2, then Step 3–5, on the same machine — but keep them
+separate in your head. If an instance host was passed as the argument, treat this as
+agent-side onboarding against that host and skip to Step 3.
 
 ### 1. Stand up the instance
 
@@ -88,7 +90,7 @@ curl -fsSL "https://jentic.com/install.sh" | JENTIC_NO_INSTALL=1 sh
 
 - **A person setting up a local agent** → `jentic bootstrap` (creates an isolated account
   + registration + installs the onboarding skill into detected runtimes).
-- **An agent that has no profile yet** → `jentic register`.
+- **An agent that has no context yet** → `jentic register`.
 
 Point at a non-local instance with `--base-url http://<instance-host>:8000` (or via
 `~/.jentic/config.yaml`). Both **block on human approval** — a person with dashboard access
@@ -98,12 +100,14 @@ user to approve it in the deployment's dashboard (the bundled UI at `/app`).
 ### 5. Verify the agent is live
 
 ```
-jentic profile list      # active profile shows a valid token + its base_url
+jentic context list      # active context shows a valid token + its base_url
 jentic access whoami     # status: active, with scopes + toolkit bindings
 ```
 
-Once `whoami` is `active` with a valid token, onboarding is done. Hand off to the
-**jentic** skill for the discover → request-access → execute loop
+Once `whoami` is `active` with a valid token, onboarding is done. Tell the user that
+install was a one-time terminal setup — day-to-day use of Jentic One is from **Claude
+Code or another agent runtime**, not Cowork or chat. Hand off to the **jentic** skill for the discover →
+request-access → execute loop
 (`jentic catalog import` → `jentic search` → `jentic inspect` → `jentic execute`).
 
 ## Getting the always-current onboarding skill
@@ -121,4 +125,4 @@ never drifts from the running version:
 
 - `curl http://<host>:8000/health` returns 2xx (or `jenticctl status` is healthy).
 - Docker path: `app`, `broker`, `db` up via `docker compose -f ~/.jentic/docker-compose.yaml ps`.
-- `jentic profile list` shows a valid token; `jentic access whoami` is `active`.
+- `jentic context list` shows a valid token; `jentic access whoami` is `active`.
